@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ColorPrimary">#BBDEFB</color>
+    <color name="ColorPrimaryDark">#90CAF9</color>
+    <color name="textColorPrimary">#D9FFFFFF</color>
+    <color name="text_secondary">#D9000000</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#2196F3</color>
+
+    <color name="color_text_lablel_value">#707070</color>
+    <color name="color_text_lablel">#333333</color>
+    <color name="color_Separator_line">#50000000</color>
+    <color name="color1">#42A5F5</color>
+    <color name="white">#ffffff</color>
+    <color name="editext_backgrd">#50000000</color>
+    <color name="search_textColor">#aeaeae</color>
+    <color name="profile_btn_color">@color/ColorPrimary</color>
+
+    <color name="light_transparent">#40FFFFFF</color>
+    <color name="grey_menu">#EbE2F7</color>
+    <color name="blue_text_menu">@color/ColorPrimary</color>
+    <color name="dark_black">#333333</color>
+    <color name="grey_divider_menu">#BFBFBF</color>
+    <color name="tranparent">#00000000</color>
+    <color name="light_grey">#E7E0F0</color>
+
+
+</resources>

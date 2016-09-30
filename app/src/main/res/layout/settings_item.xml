@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+   <LinearLayout
+            android:id="@+id/linearLayoutChild"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:orientation="vertical"
+
+       >
+       <org.partner.customviews.CustomButton
+           android:id="@+id/REGISTER_PARTNER_btn"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/login_button_height"
+           android:layout_margin="@dimen/margin_btn"
+           android:background="@drawable/roundbutton"
+           android:visibility="visible"
+           android:gravity="center|center_horizontal"
+           android:text="REGISTER PARTNER"
+           android:textColor="@color/color_text_lablel"
+           android:textSize="@dimen/size_16"
+           custom:fontAssetName="Roboto-Medium.ttf" />
+       <org.partner.customviews.CustomButton
+           android:id="@+id/START_SESSION_btn"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/login_button_height"
+           android:layout_margin="@dimen/margin_btn"
+           android:background="@drawable/roundbutton"
+           android:visibility="visible"
+           android:gravity="center|center_horizontal"
+           android:text="START SESSION"
+           android:textColor="@color/color_text_lablel"
+           android:textSize="@dimen/size_16"
+           custom:fontAssetName="Roboto-Medium.ttf" />
+       <org.partner.customviews.CustomButton
+           android:id="@+id/END_SESSION_btn"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/login_button_height"
+           android:layout_margin="@dimen/margin_btn"
+           android:background="@drawable/roundbutton"
+           android:visibility="visible"
+           android:gravity="center"
+           android:text="END SESSION"
+           android:textColor="@color/color_text_lablel"
+           android:textSize="@dimen/size_16"
+           custom:fontAssetName="Roboto-Medium.ttf" />
+
+
+
+
+        </LinearLayout>
+
+</RelativeLayout>

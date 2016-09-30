@@ -1,0 +1,15 @@
+<org.partner.customviews.CustomEditText
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/commentTemplate"
+        android:layout_marginLeft="@dimen/margin_text_left_right_akshara"
+        android:layout_marginRight="@dimen/margin_text_left_right_akshara"
+        android:textCursorDrawable="@drawable/color_cursor"
+        style="@style/EditTextComment_round_style"
+        android:layout_marginTop="5dp"
+        android:hint="@string/father_name_hint"
+    android:imeOptions="actionNext"
+        android:inputType="textMultiLine|text"
+        android:lines="4"
+        android:gravity="top|center_vertical"
+        custom:fontAssetName="Roboto-Regular.ttf"></org.partner.customviews.CustomEditText>

@@ -1,0 +1,107 @@
+{
+  "partnerName": "ABC",
+  "partnerId": "org.ekstep.partner.abc",
+ // "partnerPublicKey":"dfsgnd43737",
+  "partnerPublicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvgDm/lRk4ZU4ZUAaLRqXhzxGbRzSFOjOsIEgGAMYkh3+pULK/9evvOhI5X2afbnLLTo6h9MzjzWKio/G5jTH8YRS61ohBnhL8TKkVwXlU9GYnvOZimIoizPXimhNrVcAYvo4GNwrB9sxGFyNPup0CBCnyWifdhKOWGo5LGhNCP9ehmJJchPw23RN+VeF/fsW9WVJNTZFXy4WYbsM7YVGcQWYgCZX4eNqBcckP3aXaFTej1pPHfti2n+BLmudGK60lnZ4ePBidEi6WoPzpMrdMnwzkYOnQ8KBV0LKJr0vzqATzxGMC85fo1OUm+ZMobdl8SCLAzn5+2WFnNKyct1mtwIDAQAB",
+  "sections": [
+    [
+      {
+        "SectionHeading": "Family Details",
+        "instructions": {
+          "title": "Star(*) denotes Mandatory field.",
+          "displayOrder": 1
+        }
+      },
+      {
+        "fieldName": "Number of members in family",
+        "fieldvalue": {
+          "fieldType": "Text",
+          "fieldInputType": "number",
+          "validation": {
+            "flag": true,
+            "minimum": 2,
+            "maximum": 25
+          }
+        },
+        "fieldHint": "enter numeric digits",
+        "displayOrder": 2,
+        "fieldValues": []
+      },
+      {
+        "fieldName": "Number of Women",
+        "fieldvalue": {
+          "fieldType": "Text",
+          "fieldInputType": "number",
+          "validation": {
+            "flag": true,
+            "minimum": 1,
+            "maximum": 25
+          }
+        },
+        "fieldHint": "enter numeric digits",
+        "displayOrder": 3,
+        "fieldValues": []
+      },
+      {
+        "fieldName": "Number of Men",
+        "fieldvalue": {
+          "fieldType": "Text",
+          "fieldInputType": "number",
+          "validation": {
+            "flag": true,
+            "minimum": 1,
+            "maximum": 25
+          }
+        },
+        "fieldHint": "enter numeric digits",
+        "displayOrder": 4,
+        "fieldValues": []
+      },
+      {
+        "fieldName": "Total Household Income / mon",
+        "fieldvalue": {
+          "fieldType": "Text",
+          "fieldInputType": "number",
+          "validation": {
+            "flag": true,
+            "minimum": 0,
+            "maximum": 9999
+          }
+        },
+        "fieldHint": "enter numeric digits",
+        "displayOrder": 5,
+        "fieldValues": []
+      },
+      {
+        "fieldName": "does the family own land?",
+        "fieldvalue": {
+          "fieldType": "MultipleChoiceSingle",
+          "fieldInputType": "None",
+          "validation": {
+            "flag": true,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "fieldHint": "select any one option",
+        "displayOrder": 6,
+        "fieldValues": ["Yes", "No"]
+      },
+      {
+        "fieldName": "what all is grown on the land?",
+        "fieldvalue": {
+          "fieldType": "MultipleChoiceMore",
+          "fieldInputType": "None",
+          "validation": {
+            "flag": true,
+            "minimum": 1,
+            "maximum": 2
+          }
+        },
+        "fieldHint": "select as many options as are correct",
+        "displayOrder": 7,
+        "fieldValues": ["Wheat", "Rice", "Millet", "Vegetable", "Fruit"]
+      }
+    ]
+  ]
+}

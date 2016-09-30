@@ -1,0 +1,34 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="padding_layout">8dp</dimen>
+    <dimen name="padding_text">10dp</dimen>
+    <dimen name="size_text_label">16sp</dimen>
+    <dimen name="size_text_label_value">14sp</dimen>
+
+    <dimen name="margin_padding_very_small_5">5dp</dimen>
+    <dimen name="margin_top_13">13dp</dimen>
+    <dimen name="size_20">20sp</dimen>
+    <dimen name="margin_top_45">45dp</dimen>
+    <dimen name="margin_top_15">15dp</dimen>
+    <dimen name="margin_top_20">20dp</dimen>
+    <dimen name="margin_6">6dp</dimen>
+    <dimen name="margin_bottom_3">3dp</dimen>
+    <dimen name="size_18">18sp</dimen>
+    <dimen name="margin_top_30">30dp</dimen>
+    <dimen name="corner_radious_2">2dp</dimen>
+    <dimen name="margin_padding_left_10">10dp</dimen>
+    <dimen name="size_14">14sp</dimen>
+    <dimen name="margin_top_40">40dp</dimen>
+    <dimen name="login_button_height">45dp</dimen>
+    <dimen name="margin_btn">10dp</dimen>
+    <dimen name="size_16">16sp</dimen>
+    <dimen name="margin_bottom_list">60dp</dimen>
+    <dimen name="padding_text_akshara">10dp</dimen>
+    <dimen name="padding_textSize_akshara">15sp</dimen>
+    <dimen name="margin_text_left_right_akshara">8dp</dimen>
+    <dimen name="margin_bottom_scroll">80dp</dimen>
+
+
+</resources>

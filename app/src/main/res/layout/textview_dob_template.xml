@@ -1,0 +1,15 @@
+<org.partner.customviews.CustomTextView
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:custom="http://schemas.android.com/apk/res-auto"
+
+android:id="@+id/textdobTemplate"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_text_left_right_akshara"
+    android:layout_marginRight="@dimen/margin_text_left_right_akshara"
+    android:textCursorDrawable="@drawable/color_cursor"
+    style="@style/EditText_round_style"
+    android:hint="@string/dob_hint"
+    custom:fontAssetName="Roboto-Regular.ttf"
+    android:drawableRight="@drawable/icn_dobpicker"
+    android:imeOptions="actionNext"    />

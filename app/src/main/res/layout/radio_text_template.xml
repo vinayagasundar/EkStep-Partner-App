@@ -1,0 +1,15 @@
+<RadioButton
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/radioTemplate"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_text_left_right_akshara"
+    android:layout_marginRight="@dimen/margin_text_left_right_akshara"
+
+    android:padding="@dimen/padding_text_akshara"
+android:layout_gravity="center"
+android:textColor="@color/color_text_lablel_value"
+android:textSize="@dimen/padding_textSize_akshara"
+android:text="@string/gender"
+    android:checked="false"
+  />

@@ -1,0 +1,10 @@
+<Spinner
+    xmlns:android="http://schemas.android.com/apk/res/android"
+       android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/spinner_style"
+        android:popupBackground="@color/white"
+        android:focusableInTouchMode="true"
+        android:id="@+id/spinnerTemplate"
+        android:spinnerMode="dropdown"
+        />

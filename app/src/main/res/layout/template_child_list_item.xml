@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+   <LinearLayout
+            android:id="@+id/linearLayoutChild"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            android:padding="@dimen/padding_layout"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+       >
+
+
+           <org.partner.customviews.CustomTextView
+               android:id="@+id/textViewHeading"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:padding="8dp"
+               android:layout_gravity="center"
+               android:textColor="@color/color_text_lablel"
+               android:textSize="14sp"
+               android:text="abc_action_bar_home_description "
+               custom:fontAssetName="Roboto-Regular.ttf"
+           />
+
+
+       </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

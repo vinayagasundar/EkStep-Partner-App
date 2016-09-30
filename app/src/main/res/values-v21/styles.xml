@@ -1,0 +1,29 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/ColorPrimary</item>
+        <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
+
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AksharaTheme" parent="AksharaTheme.Base">
+
+    </style>
+
+    <style name="AksharaTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/ColorPrimary</item>
+        <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
+        <!-- <item name="colorPrimaryDark">@color/transparent_twt</item>-->
+        <item name="colorAccent">@color/ColorPrimaryDark</item>
+    </style>
+    <style name="PopupMenu" parent="@style/Widget.AppCompat.Light.PopupMenu">
+        <item name="overlapAnchor">false</item>
+    </style>
+
+
+</resources>
