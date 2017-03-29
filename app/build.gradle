@@ -52,23 +52,23 @@ android {
             versionName += '-debug';
         }
         flavor.versionName = versionName;
-        variant.outputs.each{ output ->
-            output.outputFile = new File(output.outputFile.parent,"Generic-Partner-App-" + versionName + ".apk" )
+        variant.outputs.each { output ->
+            output.outputFile = new File(output.outputFile.parent, "Generic-Partner-App-" + versionName + ".apk")
         }
     }
 }
 
 dependencies {
-    def supportLibrary = '21.0.+'
+    def supportLibrary = '23.4.0'
     compile "com.android.support:appcompat-v7:${supportLibrary}"
+    compile "com.android.support:design:${supportLibrary}"
     compile('com.afollestad.material-dialogs:core:0.8.3.0@aar') {
         transitive = true
     }
-    compile "com.android.support:recyclerview-v7:${supportLibrary}"
+
+
     compile 'com.jayway.android.robotium:robotium-solo:5.4.1'
-    compile "org.ekstep.genieservices:sdks:1.2.4@aar"
-    compile "org.ekstep.genieservices:aidls:1.2.4@aar"
+    compile 'org.ekstep.genieservices:sdks:1.2.4@aar'
+    compile 'org.ekstep.genieservices:aidls:1.2.4@aar'
     compile 'com.github.clans:fab:1.+'
-
-
 }
