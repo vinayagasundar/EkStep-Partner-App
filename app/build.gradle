@@ -62,6 +62,7 @@ dependencies {
     def supportLibrary = '23.4.0'
     compile "com.android.support:appcompat-v7:${supportLibrary}"
     compile "com.android.support:design:${supportLibrary}"
+    compile "com.android.support:gridlayout-v7:${supportLibrary}"
     compile('com.afollestad.material-dialogs:core:0.8.3.0@aar') {
         transitive = true
     }

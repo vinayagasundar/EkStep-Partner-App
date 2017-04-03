@@ -26,16 +26,18 @@
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         android:layout_marginTop="?attr/actionBarSize">
 
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </android.support.v4.widget.NestedScrollView>
 
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_child_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

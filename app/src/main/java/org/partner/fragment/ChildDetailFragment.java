@@ -4,28 +4,23 @@ package org.partner.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.ekstep.genieservices.sdks.Partner;
 import org.ekstep.genieservices.sdks.UserProfile;
 import org.ekstep.genieservices.sdks.response.GenieListResponse;
 import org.json.JSONArray;
 import org.partner.BuildConfig;
 import org.partner.R;
-import org.partner.activity.LandingActivity;
-import org.partner.adapter.ChildListAdapter;
 import org.partner.callback.IUserProfile;
-import org.partner.callback.LaunchFragmentCallback;
-import org.partner.callback.OnItemClickListener;
 import org.partner.callback.UserProfileResponseHandler;
 import org.partner.model.Child;
 
@@ -33,42 +28,51 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * Fragment to display the Child from Genie
+ * A simple {@link Fragment} subclass.
  */
-public class ListChildFragment extends Fragment
+public class ChildDetailFragment extends Fragment
         implements IUserProfile {
 
-
-    private static final String TAG = "ListChildFragment";
+    private static final String TAG = "ChildDetailFragment";
 
     private static final boolean DEBUG = BuildConfig.DEBUG;
 
+    private static final String BUNDLE_UID = "uid";
 
     /**
-     * To display Child from Genie as a List
+     * UID of the child selected
      */
-    private RecyclerView mChildListRecyclerView;
+    private String mUid;
 
 
-    private Partner mPartner;
+
+    private TextView mHandleText;
+    private TextView mGenderText;
+    private TextView mAgeText;
+    private TextView mClassText;
+
 
     private UserProfile mUserProfile;
 
 
     /**
-     * List to hold the Children
+     * Create a new instance of the Fragment
+     * @param uid UID used inside the fragment
+     * @return instance of the {@link ChildDetailFragment}
      */
-    private List<Child> mChildList;
+    public static ChildDetailFragment newInstance(String uid) {
+        ChildDetailFragment fragment = new ChildDetailFragment();
+
+        Bundle args = new Bundle();
+        args.putString(BUNDLE_UID, uid);
+
+        fragment.setArguments(args);
+
+        return fragment;
+    }
 
 
-    /**
-     * Callback for updating fragment
-     */
-    private LaunchFragmentCallback mCallback;
-
-
-
-    public ListChildFragment() {
+    public ChildDetailFragment() {
         // Required empty public constructor
     }
 
@@ -76,10 +80,9 @@ public class ListChildFragment extends Fragment
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
 
-        if (getActivity() instanceof LaunchFragmentCallback) {
-            mCallback = (LaunchFragmentCallback) getActivity();
+        if (getArguments() != null) {
+            mUid = getArguments().getString(BUNDLE_UID, null);
         }
     }
 
@@ -87,21 +90,31 @@ public class ListChildFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_child, container, false);
+        return inflater.inflate(R.layout.fragment_child_detail, container, false);
     }
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mChildListRecyclerView = (RecyclerView) view.findViewById(R.id.child_recycler_view);
+        mHandleText = (TextView) view.findViewById(R.id.child_handle_text);
+        mGenderText = (TextView) view.findViewById(R.id.gender_text);
+        mAgeText = (TextView) view.findViewById(R.id.age_text);
+        mClassText = (TextView) view.findViewById(R.id.class_text);
 
-        mPartner = new Partner(getActivity());
+
         mUserProfile = new UserProfile(getActivity());
 
         UserProfileResponseHandler responseHandler = new UserProfileResponseHandler(this);
         mUserProfile.getAllProfiles(responseHandler);
+
+        Button launchGenie = (Button) view.findViewById(R.id.launch_genie_button);
+        launchGenie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
@@ -110,14 +123,11 @@ public class ListChildFragment extends Fragment
     public void onDestroy() {
         super.onDestroy();
 
-        if (mPartner != null) {
-            mPartner.finish();
-        }
-
         if (mUserProfile != null) {
             mUserProfile.finish();
         }
     }
+
 
     @Override
     public void onSuccessUserProfile(GenieListResponse genieListResponse) {
@@ -128,9 +138,15 @@ public class ListChildFragment extends Fragment
         JSONArray jsonArray = new JSONArray(genieListResponse.getResults());
 
         Type childType = new TypeToken<List<Child>>(){}.getType();
-        mChildList = new Gson().fromJson(jsonArray.toString(), childType);
+        List<Child> childList = new Gson().fromJson(jsonArray.toString(), childType);
 
-        initChildListRecycler();
+
+        for (Child child : childList) {
+            if (child.getUid().equals(mUid)) {
+                displayChildDetails(child);
+                break;
+            }
+        }
     }
 
     @Override
@@ -144,32 +160,11 @@ public class ListChildFragment extends Fragment
     }
 
 
-    /**
-     * Initialize the {@link RecyclerView} with the Child data
-     */
-    private void initChildListRecycler() {
-        if (mChildList == null) {
-            return;
-        }
+    private void displayChildDetails(Child child) {
+        mHandleText.setText(child.getHandle());
 
-        ChildListAdapter adapter = new ChildListAdapter(mChildList);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-
-        mChildListRecyclerView.setLayoutManager(layoutManager);
-        mChildListRecyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Child child = mChildList.get(position);
-
-                if (mCallback != null) {
-                    mCallback.switchFragment(LandingActivity.FRAGMENT_CHILD_DETAILS,
-                            child.getUid());
-                }
-            }
-        });
+        mAgeText.setText(String.valueOf(child.getAge()));
+        mClassText.setText(String.valueOf(child.getStandard()));
+        mGenderText.setText(child.getGender());
     }
-
-
 }

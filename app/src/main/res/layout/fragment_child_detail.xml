@@ -1,0 +1,121 @@
+<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:grid="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    grid:alignmentMode="alignBounds"
+    grid:columnCount="3"
+    tools:context="org.partner.fragment.ChildDetailFragment">
+
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_handle"
+        grid:layout_columnSpan="3"
+        grid:layout_gravity="fill_horizontal" />
+
+
+    <TextView
+        android:id="@+id/child_handle_text"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        grid:layout_columnSpan="3"
+        grid:layout_gravity="fill_horizontal"
+        tools:text="Handle" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        grid:layout_columnSpan="3"
+        grid:layout_gravity="fill_horizontal" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@drawable/line_gradient"
+        grid:layout_columnSpan="3"
+        grid:layout_gravity="fill_horizontal" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        grid:layout_columnSpan="3"
+        grid:layout_gravity="fill_horizontal" />
+
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_gender"
+        grid:layout_column="0"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill_horizontal" />
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_age"
+        grid:layout_column="1"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill_horizontal" />
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_class"
+        grid:layout_column="2"
+        grid:layout_columnWeight="1"
+        grid:layout_gravity="fill_horizontal" />
+
+
+    <TextView
+        android:id="@+id/gender_text"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        grid:layout_column="0"
+        grid:layout_gravity="fill_horizontal"
+        tools:text="Handle" />
+
+
+    <TextView
+        android:id="@+id/age_text"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        grid:layout_column="1"
+        grid:layout_gravity="fill_horizontal"
+        tools:text="Handle" />
+
+
+    <TextView
+        android:id="@+id/class_text"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        grid:layout_column="2"
+        grid:layout_gravity="fill_horizontal"
+        tools:text="Handle" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        grid:layout_columnSpan="3"
+        grid:layout_gravity="fill_horizontal" />
+
+    <Button
+        android:id="@+id/launch_genie_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_launch_genie"
+        grid:layout_columnSpan="3"
+        grid:layout_gravity="fill_horizontal|center|bottom" />
+
+</android.support.v7.widget.GridLayout>

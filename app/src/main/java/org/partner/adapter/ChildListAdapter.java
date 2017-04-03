@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.partner.R;
+import org.partner.callback.OnItemClickListener;
 import org.partner.model.Child;
 
 import java.util.List;
@@ -22,6 +23,9 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.Chil
 
     private List<Child> mData;
 
+
+    private OnItemClickListener mOnItemClickListener;
+
     public ChildListAdapter(List<Child> mData) {
         this.mData = mData;
     }
@@ -35,7 +39,7 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.Chil
     }
 
     @Override
-    public void onBindViewHolder(ChildViewHolder holder, int position) {
+    public void onBindViewHolder(final ChildViewHolder holder, int position) {
         Child child = mData.get(position);
 
         int age = child.getAge();
@@ -49,11 +53,25 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.Chil
 
         holder.mChildHandleText.setText(child.getHandle());
         holder.mChildStandardText.setText(ageText);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemClick(holder.getAdapterPosition());
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return (mData != null ? mData.size() : 0);
+    }
+
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
     }
 
     static class ChildViewHolder extends RecyclerView.ViewHolder {

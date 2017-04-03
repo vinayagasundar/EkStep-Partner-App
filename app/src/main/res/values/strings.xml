@@ -57,6 +57,11 @@
 
     <!--LevelFragment-->
     <string name="level_not_valid">Please create child in Genie for Child level</string>
+    <string name="label_handle">Handle</string>
+    <string name="label_gender">Gender</string>
+    <string name="label_age">Age</string>
+    <string name="label_class">Class</string>
+    <string name="label_launch_genie">Launch Genie</string>
 
 
 </resources>
