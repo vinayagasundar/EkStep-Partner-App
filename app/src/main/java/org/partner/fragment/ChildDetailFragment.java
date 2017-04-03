@@ -65,9 +65,15 @@ public class ChildDetailFragment extends Fragment
     private TextView mAgeText;
     private TextView mClassText;
 
-
+    /**
+     * User Profile to get the list of the Child & Set Current Child in genie
+     */
     private UserProfile mUserProfile;
 
+
+    /**
+     * To start the Partner Session for moving into genie
+     */
     private Partner mPartner;
 
     private ProgressDialog mProgressDialog;
@@ -144,6 +150,12 @@ public class ChildDetailFragment extends Fragment
         if (mUserProfile != null) {
             mUserProfile.finish();
         }
+
+        if (mPartner != null) {
+            mPartner.finish();
+        }
+
+        hideDialog();
     }
 
 
