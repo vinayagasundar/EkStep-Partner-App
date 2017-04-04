@@ -43,16 +43,16 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.Chil
         Child child = mData.get(position);
 
         int standard = child.getStandard();
-        String standartText = "%s %s";
+        String standardText = "%s %s";
 
         if (standard > 0) {
-            standartText = String.format(Locale.ENGLISH, standartText, "Class", standard);
+            standardText = String.format(Locale.ENGLISH, standardText, "Class", standard);
         } else {
-            standartText = String.format(Locale.ENGLISH, standartText, "Class", "No Data");
+            standardText = String.format(Locale.ENGLISH, standardText, "Class", "No Data");
         }
 
         holder.mChildHandleText.setText(child.getHandle());
-        holder.mChildStandardText.setText(standartText);
+        holder.mChildStandardText.setText(standardText);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
