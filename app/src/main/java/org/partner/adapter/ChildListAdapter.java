@@ -42,17 +42,17 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.Chil
     public void onBindViewHolder(final ChildViewHolder holder, int position) {
         Child child = mData.get(position);
 
-        int age = child.getAge();
-        String ageText = "%s %s";
+        int standard = child.getStandard();
+        String standartText = "%s %s";
 
-        if (age > 0) {
-            ageText = String.format(Locale.ENGLISH, ageText, "Class", age);
+        if (standard > 0) {
+            standartText = String.format(Locale.ENGLISH, standartText, "Class", standard);
         } else {
-            ageText = String.format(Locale.ENGLISH, ageText, "Class", "No Data");
+            standartText = String.format(Locale.ENGLISH, standartText, "Class", "No Data");
         }
 
         holder.mChildHandleText.setText(child.getHandle());
-        holder.mChildStandardText.setText(ageText);
+        holder.mChildStandardText.setText(standartText);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
