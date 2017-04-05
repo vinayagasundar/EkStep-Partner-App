@@ -12,6 +12,7 @@ import org.partner.R;
 import org.partner.callback.LaunchFragmentCallback;
 import org.partner.fragment.ChildDetailFragment;
 import org.partner.fragment.CreateChildFragment;
+import org.partner.fragment.ListChildFragment;
 
 public class LandingActivity extends AppCompatActivity
         implements LaunchFragmentCallback {
