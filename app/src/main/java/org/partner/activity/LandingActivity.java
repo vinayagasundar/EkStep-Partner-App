@@ -6,10 +6,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import org.partner.R;
 import org.partner.callback.LaunchFragmentCallback;
 import org.partner.fragment.ChildDetailFragment;
+import org.partner.fragment.CreateChildFragment;
 import org.partner.fragment.ListChildFragment;
 
 public class LandingActivity extends AppCompatActivity
@@ -18,6 +20,7 @@ public class LandingActivity extends AppCompatActivity
 
     public static final int FRAGMENT_LIST_CHILD = 1;
     public static final int FRAGMENT_CHILD_DETAILS = 2;
+    public static final int FRAGMENT_CHILD_CREATE = 3;
 
 
 
@@ -44,6 +47,13 @@ public class LandingActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         mAddChildFab = (FloatingActionButton) findViewById(R.id.add_child_fab);
+        mAddChildFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCurrentFragmentId = FRAGMENT_CHILD_CREATE;
+                displayFragment();
+            }
+        });
 
         if (savedInstanceState == null) {
             mCurrentFragmentId = FRAGMENT_LIST_CHILD;
@@ -72,6 +82,11 @@ public class LandingActivity extends AppCompatActivity
             case FRAGMENT_CHILD_DETAILS:
                 mAddChildFab.hide();
                 fragment = ChildDetailFragment.newInstance(mUid);
+                break;
+
+            case FRAGMENT_CHILD_CREATE:
+                mAddChildFab.hide();
+                fragment = new CreateChildFragment();
                 break;
         }
 

@@ -417,7 +417,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawer.
     @Override
     public void onFailureUserprofile(GenieListResponse genieListResponse) {
         if(D)
-            Log.d(TAG," onFailureUserprofile :"+genieListResponse);
+            Log.d(TAG," onFailureUserProfile :"+genieListResponse);
         Util.showToastmessage(MainActivity.this, genieListResponse.getError());
 
     }

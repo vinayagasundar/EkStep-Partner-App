@@ -182,7 +182,7 @@ public class ChildDetailFragment extends Fragment
     @Override
     public void onFailureUserprofile(GenieListResponse genieListResponse) {
         if (DEBUG) {
-            Log.i(TAG, "onFailureUserprofile: " + genieListResponse.getError());
+            Log.i(TAG, "onFailureUserProfile: " + genieListResponse.getError());
         }
 
         Toast.makeText(getActivity(), genieListResponse.getError(),
