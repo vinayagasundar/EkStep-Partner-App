@@ -163,9 +163,10 @@ public class CreateChildFragment extends Fragment
             Log.d(TAG, "onSuccessSession: " + result);
         }
 
-        Profile profile=new Profile(mChildNameEditText.getText().toString(), "Avatar","en");
+        Profile profile=new Profile(mHandleEditText.getText().toString(), "Avatar","en");
         profile.setStandard(Integer.valueOf(mClassSpinner.getSelectedItem().toString()));
         profile.setGender(mGenderSpinner.getSelectedItem().toString());
+        profile.setAge(Integer.valueOf(mAgeEditText.getText().toString()));
 
         mUserProfile = new UserProfile(getActivity());
         UserProfileCreateResponseHandler responseHandler =
