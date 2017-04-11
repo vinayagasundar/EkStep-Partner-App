@@ -30,6 +30,7 @@ import org.partner.R;
 import org.partner.Util.AppConstants;
 import org.partner.Util.TelemetryEventGenertor;
 import org.partner.Util.Util;
+import org.partner.Util.Utils;
 import org.partner.callback.CurrentGetuserResponseHandler;
 import org.partner.callback.CurrentuserResponseHandler;
 import org.partner.callback.ICurrentGetUser;
@@ -312,7 +313,7 @@ public class CreateChildFragment extends Fragment
         if (DEBUG)
             Log.d(TAG, "onSuccessTelemetry: ");
 
-        Util.processSuccess(getActivity(), genieResponse);
+        Utils.processSuccess(getActivity(), genieResponse);
 
 
         PackageManager manager = getActivity().getPackageManager();
@@ -339,7 +340,7 @@ public class CreateChildFragment extends Fragment
             Log.d(TAG, "onFailureTelemetry: ");
 
         hideDialog();
-        Util.processSendFailure(getActivity(), genieResponse);
+        Utils.processSendFailure(getActivity(), genieResponse);
     }
 
     private void processData() {

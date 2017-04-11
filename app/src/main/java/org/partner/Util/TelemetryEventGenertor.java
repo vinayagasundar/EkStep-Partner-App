@@ -36,8 +36,8 @@ public class TelemetryEventGenertor {
             mainJSONObject.put(VERSION, TELEMETRY_VERSION);
 
             gameDataJsonObject=new JSONObject();
-            gameDataJsonObject.put(ID,Util.getPackageName(context));
-            gameDataJsonObject.put(VERSION, Util.getVersion(context));
+            gameDataJsonObject.put(ID, Utils.getPackageName(context));
+            gameDataJsonObject.put(VERSION, Utils.getVersion(context));
 
             mainJSONObject.put(GAME_DATA,gameDataJsonObject);
             mainJSONObject.put(SESSION_UUID, "");
@@ -74,8 +74,8 @@ public class TelemetryEventGenertor {
             mainJSONObject.put(VERSION, TELEMETRY_VERSION);
 
             gameDataJsonObject=new JSONObject();
-            gameDataJsonObject.put(ID,Util.getPackageName(context));
-            gameDataJsonObject.put(VERSION, Util.getVersion(context));
+            gameDataJsonObject.put(ID, Utils.getPackageName(context));
+            gameDataJsonObject.put(VERSION, Utils.getVersion(context));
 
             mainJSONObject.put(GAME_DATA,gameDataJsonObject);
             mainJSONObject.put(SESSION_UUID, "");
