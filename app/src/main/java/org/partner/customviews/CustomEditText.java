@@ -4,14 +4,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.widget.EditText;
 
 import org.partner.R;
 
 /**
  * Created by gwl on 06/08/2015.
  */
-public class CustomEditText extends EditText {
+public class CustomEditText extends android.support.v7.widget.AppCompatEditText {
 
     public CustomEditText(Context context) {
         super(context);
@@ -40,11 +39,13 @@ public class CustomEditText extends EditText {
                         if (font != null) {
                             this.setTypeface(font);
                         }
-                    } catch (RuntimeException e) {
+                    } catch (RuntimeException ignored) {
 
                     }
             }
         }
+
+        a.recycle();
     }
 }
 

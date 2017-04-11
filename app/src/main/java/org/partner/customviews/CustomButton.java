@@ -12,7 +12,7 @@ import org.partner.R;
 /**
  * Created by gwl on 06/08/2015.
  */
-public class CustomButton extends Button {
+public class CustomButton extends android.support.v7.widget.AppCompatButton {
 
     public CustomButton(Context context) {
         super(context);
@@ -40,11 +40,13 @@ public class CustomButton extends Button {
                         if (font != null) {
                             this.setTypeface(font);
                         }
-                    } catch (RuntimeException e) {
+                    } catch (RuntimeException ignored) {
 
                     }
             }
         }
+
+        a.recycle();
     }
 }
 

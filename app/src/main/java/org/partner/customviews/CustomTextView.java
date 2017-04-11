@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.widget.TextView;
 
 import org.partner.R;
 import org.partner.model.FontCache;
@@ -14,7 +12,7 @@ import org.partner.model.FontCache;
 /**
  * Created by gwl on 06/08/2015.
  */
-public class CustomTextView extends TextView {
+public class CustomTextView extends android.support.v7.widget.AppCompatTextView {
 
     public CustomTextView(Context context) {
         super(context);
@@ -42,7 +40,7 @@ public class CustomTextView extends TextView {
                         if (font != null) {
                             this.setTypeface(font);
                         }
-                    } catch (RuntimeException e) {
+                    } catch (RuntimeException ignored) {
 
                     }
                     finally {
