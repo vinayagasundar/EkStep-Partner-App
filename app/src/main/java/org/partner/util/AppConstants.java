@@ -1,4 +1,4 @@
-package org.partner.Util;
+package org.partner.util;
 
 /**
  * It'll contain all the constant used in the App

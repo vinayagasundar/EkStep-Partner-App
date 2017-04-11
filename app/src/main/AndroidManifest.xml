@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".Util.Util"
+        android:name=".PartnerApp"
         android:allowBackup="true"
         android:icon="@drawable/partner_logo"
         android:label="@string/app_name"

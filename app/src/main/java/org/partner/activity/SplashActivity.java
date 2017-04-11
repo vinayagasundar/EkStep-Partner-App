@@ -12,8 +12,8 @@ import org.ekstep.genieservices.sdks.Partner;
 import org.ekstep.genieservices.sdks.response.GenieResponse;
 import org.partner.BuildConfig;
 import org.partner.R;
-import org.partner.Util.AppConstants;
-import org.partner.Util.Utils;
+import org.partner.util.AppConstants;
+import org.partner.util.Utils;
 import org.partner.callback.IRegister;
 import org.partner.callback.RegisterResponseHandler;
 

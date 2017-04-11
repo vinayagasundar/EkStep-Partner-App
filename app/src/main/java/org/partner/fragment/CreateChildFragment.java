@@ -27,10 +27,10 @@ import org.ekstep.genieservices.sdks.UserProfile;
 import org.ekstep.genieservices.sdks.response.GenieResponse;
 import org.partner.BuildConfig;
 import org.partner.R;
-import org.partner.Util.AppConstants;
-import org.partner.Util.TelemetryEventGenertor;
-import org.partner.Util.Util;
-import org.partner.Util.Utils;
+import org.partner.util.AppConstants;
+import org.partner.PartnerApp;
+import org.partner.util.TelemetryEventGenertor;
+import org.partner.util.Utils;
 import org.partner.callback.CurrentGetuserResponseHandler;
 import org.partner.callback.CurrentuserResponseHandler;
 import org.partner.callback.ICurrentGetUser;
@@ -285,7 +285,7 @@ public class CreateChildFragment extends Fragment
             Log.d(TAG, "onSuccessPartner :" + result);
         }
 
-        Util util = (Util) getActivity().getApplicationContext();
+        PartnerApp partnerApp = (PartnerApp) getActivity().getApplicationContext();
 
         Telemetry telemetry = new Telemetry(getActivity());
 
@@ -293,7 +293,7 @@ public class CreateChildFragment extends Fragment
 
         telemetry.send(TelemetryEventGenertor.generateOEEndEvent(getActivity(),
                 mUid,
-                util.getStartTime(),
+                partnerApp.getStartTime(),
                 System.currentTimeMillis()).toString(), responseHandler);
     }
 

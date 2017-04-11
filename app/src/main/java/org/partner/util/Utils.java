@@ -1,4 +1,4 @@
-package org.partner.Util;
+package org.partner.util;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

@@ -1,9 +1,10 @@
-package org.partner.Util;
+package org.partner.util;
 
 import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONObject;
+import org.partner.PartnerApp;
 
 
 public class TelemetryEventGenertor {
@@ -52,7 +53,7 @@ public class TelemetryEventGenertor {
             eDataJsonObject.put(EXT, extObject);
             mainJSONObject.put(EVENT_DATA, eDataJsonObject);
 
-            if(Util.DEBUG)
+            if(PartnerApp.DEBUG)
             Log.e("OE_START_EVENT", mainJSONObject.toString());
 
 
@@ -93,7 +94,7 @@ public class TelemetryEventGenertor {
             JSONObject extObject=new JSONObject();
             eksJsonObject.put(EXT, extObject);
             mainJSONObject.put(EVENT_DATA, eksJsonObject);
-            if(Util.DEBUG)
+            if(PartnerApp.DEBUG)
             Log.e("OE_END_EVENT", mainJSONObject.toString());
 
 
