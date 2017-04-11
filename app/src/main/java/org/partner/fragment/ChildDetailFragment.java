@@ -28,8 +28,8 @@ import org.partner.R;
 import org.partner.util.AppConstants;
 import org.partner.util.TelemetryEventGenertor;
 import org.partner.PartnerApp;
-import org.partner.callback.CurrentGetuserResponseHandler;
-import org.partner.callback.CurrentuserResponseHandler;
+import org.partner.callback.CurrentGetUserResponseHandler;
+import org.partner.callback.CurrentUserResponseHandler;
 import org.partner.callback.ICurrentGetUser;
 import org.partner.callback.ICurrentUser;
 import org.partner.callback.IStartSession;
@@ -198,7 +198,7 @@ public class ChildDetailFragment extends Fragment
             Log.i(TAG, "onSuccessSession: " + genieResponse);
         }
 
-        CurrentuserResponseHandler responseHandler = new CurrentuserResponseHandler(this);
+        CurrentUserResponseHandler responseHandler = new CurrentUserResponseHandler(this);
         mUserProfile.setCurrentUser(mUid, responseHandler);
     }
 
@@ -220,7 +220,7 @@ public class ChildDetailFragment extends Fragment
             Log.i(TAG, "onSuccessCurrentUser: " + genieResponse);
         }
 
-        CurrentGetuserResponseHandler responseHandler = new CurrentGetuserResponseHandler(this);
+        CurrentGetUserResponseHandler responseHandler = new CurrentGetUserResponseHandler(this);
         mUserProfile.setCurrentUser(mUid, responseHandler);
     }
 

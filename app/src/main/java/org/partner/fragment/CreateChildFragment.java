@@ -31,8 +31,8 @@ import org.partner.util.AppConstants;
 import org.partner.PartnerApp;
 import org.partner.util.TelemetryEventGenertor;
 import org.partner.util.Utils;
-import org.partner.callback.CurrentGetuserResponseHandler;
-import org.partner.callback.CurrentuserResponseHandler;
+import org.partner.callback.CurrentGetUserResponseHandler;
+import org.partner.callback.CurrentUserResponseHandler;
 import org.partner.callback.ICurrentGetUser;
 import org.partner.callback.ICurrentUser;
 import org.partner.callback.IPartnerData;
@@ -195,7 +195,7 @@ public class CreateChildFragment extends Fragment
         Type type = new TypeToken<HashMap<String, String>>(){}.getType();
         HashMap<String, String> data = new Gson().fromJson(json, type);
 
-        CurrentuserResponseHandler responseHandler = new CurrentuserResponseHandler(this);
+        CurrentUserResponseHandler responseHandler = new CurrentUserResponseHandler(this);
 
         mUid = data.get("uid");
 
@@ -225,7 +225,7 @@ public class CreateChildFragment extends Fragment
             Log.d(TAG, "onSuccessCurrentUser: " + result);
         }
 
-        CurrentGetuserResponseHandler responseHandler = new CurrentGetuserResponseHandler(this);
+        CurrentGetUserResponseHandler responseHandler = new CurrentGetUserResponseHandler(this);
         mUserProfile.getCurrentUser(responseHandler);
     }
 

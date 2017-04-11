@@ -3,10 +3,10 @@ package org.partner.callback;
 import org.ekstep.genieservices.sdks.response.GenieResponse;
 import org.ekstep.genieservices.sdks.response.IResponseHandler;
 
-public class CurrentGetuserResponseHandler implements IResponseHandler {
+public class CurrentGetUserResponseHandler implements IResponseHandler {
     private ICurrentGetUser mICurrentGetUser = null;
 
-    public CurrentGetuserResponseHandler(ICurrentGetUser currentGetUser) {
+    public CurrentGetUserResponseHandler(ICurrentGetUser currentGetUser) {
         mICurrentGetUser = currentGetUser;
     }
  @Override
