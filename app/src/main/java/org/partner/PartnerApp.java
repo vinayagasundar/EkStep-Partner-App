@@ -2,6 +2,8 @@ package org.partner;
 
 import android.app.Application;
 
+import org.partner.database.PartnerDatabaseHandler;
+import org.partner.util.PrefUtil;
 
 
 /**
@@ -9,6 +11,16 @@ import android.app.Application;
  */
 public class PartnerApp extends Application {
     public static final boolean DEBUG=false;
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        PartnerDatabaseHandler.init(this);
+
+        PrefUtil.init(this);
+    }
 
     private long startTime;
 
