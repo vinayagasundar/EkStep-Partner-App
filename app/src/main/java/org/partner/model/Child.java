@@ -24,6 +24,10 @@ public class Child implements Parcelable {
     private int standard;
     private String uid;
 
+
+    private String fullName;
+    private String studentId;
+
     public Child() {
 
     }
@@ -40,6 +44,8 @@ public class Child implements Parcelable {
         month = in.readInt();
         standard = in.readInt();
         uid = in.readString();
+        fullName = in.readString();
+        studentId = in.readString();
     }
 
     public int getAge() {
@@ -130,6 +136,23 @@ public class Child implements Parcelable {
         this.uid = uid;
     }
 
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -148,6 +171,8 @@ public class Child implements Parcelable {
         dest.writeInt(month);
         dest.writeInt(standard);
         dest.writeString(uid);
+        dest.writeString(fullName);
+        dest.writeString(studentId);
     }
 
     public static final Creator<Child> CREATOR = new Creator<Child>() {
