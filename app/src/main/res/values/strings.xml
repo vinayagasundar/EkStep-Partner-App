@@ -88,4 +88,16 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+
+
+    <string name="district_default">PLEASE SELECT DISTRICT</string>
+    <string name="block_default">PLEASE SELECT BLOCK</string>
+    <string name="cluster_default">PLEASE SELECT CLUSTER</string>
+    <string name="school_default">PLEASE SELECT SCHOOL</string>
+
+    <string name="district">District</string>
+    <string name="block">Block</string>
+    <string name="cluster">Cluster</string>
+    <string name="school">School</string>
+    <string name="btn_Search_Child">Search Child</string>
 </resources>

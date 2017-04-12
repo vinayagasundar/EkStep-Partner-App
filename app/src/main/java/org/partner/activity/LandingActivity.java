@@ -13,6 +13,7 @@ import org.partner.callback.LaunchFragmentCallback;
 import org.partner.fragment.ChildDetailFragment;
 import org.partner.fragment.CreateChildFragment;
 import org.partner.fragment.ListChildFragment;
+import org.partner.fragment.SchoolInfoFragment;
 
 public class LandingActivity extends AppCompatActivity
         implements LaunchFragmentCallback {
@@ -21,6 +22,7 @@ public class LandingActivity extends AppCompatActivity
     public static final int FRAGMENT_LIST_CHILD = 1;
     public static final int FRAGMENT_CHILD_DETAILS = 2;
     public static final int FRAGMENT_CHILD_CREATE = 3;
+    public static final int FRAGMENT_SELECT_SCHOOL_INFO = 4;
 
 
 
@@ -56,7 +58,7 @@ public class LandingActivity extends AppCompatActivity
         });
 
         if (savedInstanceState == null) {
-            mCurrentFragmentId = FRAGMENT_LIST_CHILD;
+            mCurrentFragmentId = FRAGMENT_SELECT_SCHOOL_INFO;
             displayFragment();
         }
     }
@@ -87,6 +89,11 @@ public class LandingActivity extends AppCompatActivity
             case FRAGMENT_CHILD_CREATE:
                 mAddChildFab.hide();
                 fragment = new CreateChildFragment();
+                break;
+
+            case FRAGMENT_SELECT_SCHOOL_INFO:
+                mAddChildFab.hide();
+                fragment = new SchoolInfoFragment();
                 break;
         }
 

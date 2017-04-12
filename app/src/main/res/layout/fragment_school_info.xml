@@ -1,0 +1,81 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.SchoolInfoFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+            <!--District -->
+            <org.partner.customviews.CustomTextView
+                style="@style/text_style"
+                android:text="@string/district"
+                custom:fontAssetName="Roboto-Regular.ttf" />
+
+
+            <Spinner
+                android:id="@+id/spinnerDistrict"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:popupBackground="@color/white" />
+
+
+            <!-- BLOCK-->
+            <org.partner.customviews.CustomTextView
+                style="@style/text_style"
+                android:text="@string/block"
+                custom:fontAssetName="Roboto-Regular.ttf" />
+
+            <Spinner
+                android:id="@+id/spinnerBlock"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:padding="@dimen/padding_layout"
+                android:popupBackground="@color/white" />
+
+            <org.partner.customviews.CustomTextView
+                style="@style/text_style"
+                android:text="@string/school"
+                custom:fontAssetName="Roboto-Regular.ttf" />
+
+
+            <Spinner
+                android:id="@+id/spinnerSchool"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:padding="@dimen/padding_layout"
+                android:popupBackground="@color/white" />
+
+
+
+            <org.partner.customviews.CustomButton
+                android:id="@+id/next_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_button_height"
+                android:layout_margin="@dimen/margin_btn"
+                android:background="@drawable/roundbutton"
+                android:gravity="center"
+                android:text="Next"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/size_16"
+                custom:fontAssetName="Roboto-Medium.ttf" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

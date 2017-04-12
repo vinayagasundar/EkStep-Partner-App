@@ -1,7 +1,10 @@
 package org.partner.database;
 
 import android.database.Cursor;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+
+import org.partner.model.Child;
 
 import java.util.ArrayList;
 
@@ -73,9 +76,8 @@ public final class PartnerDBHelper {
      * @param conditionValue Value for condition field
      * @return if value exits it'll return list of string otherwise empty list
      */
-    public static ArrayList<String> getAllValueForFieldWithCondition(String tableName, String fieldName,
-                                                         String conditionField,
-                                                         String conditionValue) {
+    public static ArrayList<String> getAllValueForFieldWithCondition(
+            String tableName, String fieldName, String conditionField, String conditionValue) {
         ArrayList<String> fieldData = new ArrayList<>();
 
         if (TextUtils.isEmpty(tableName) || TextUtils.isEmpty(fieldName)
@@ -101,6 +103,88 @@ public final class PartnerDBHelper {
         }
 
         return fieldData;
+    }
+
+
+    /**
+     * It'll return the school id for given information
+     * @param district User selected district
+     * @param block User selected block with in the district
+     * @param schoolName User selected school with in the block
+     * @return if school exits it'll return otherwise return null
+     */
+    @Nullable
+    public static String getSchoolID(String district, String block, String schoolName) {
+        if (TextUtils.isEmpty(district)) {
+            throw new NullPointerException("district should not be null");
+        }
+
+        if (TextUtils.isEmpty(block)) {
+            throw new NullPointerException("block should not be null");
+        }
+
+        if (TextUtils.isEmpty(schoolName)) {
+            throw new NullPointerException("school name should not be null");
+        }
+
+        final String where = FIELD_DISTRICT + " = ? AND " + FIELD_BLOCK + " = ? "
+                + FIELD_SCHOOL_NAME + " = ?";
+        final String [] whereArgs = {
+                district,
+                block,
+                schoolName
+        };
+
+        Cursor cursor = PartnerDatabaseHandler.getInstance().query(TABLE_SCHOOL_INFO, null,
+                where, whereArgs, null, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToNext();
+            String schoolId = cursor.getString(cursor.getColumnIndex(FIELD_SCHOOL_ID));
+
+            cursor.close();
+
+            return schoolId;
+        }
+
+        return null;
+    }
+
+
+    /**
+     * Get the list of the child (student) for given {@code schoolId}
+     * @param schoolId Unique id of the school
+     * @return list of {@link Child}
+     */
+    public static ArrayList<Child> getAllChild(String schoolId) {
+        ArrayList<Child> childArrayList = new ArrayList<>();
+
+        final String where = FIELD_SCHOOL_ID + " = ?";
+        final String [] whereArgs = {
+                schoolId
+        };
+
+        Cursor cursor = PartnerDatabaseHandler.getInstance().query(TABLE_STUDENT_INFO, null, where,
+                whereArgs, null, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                Child child = new Child();
+
+                child.setStudentId(cursor.getString(cursor.getColumnIndex(FIELD_STUDENT_ID)));
+                child.setFullName(cursor.getString(cursor.getColumnIndex(FIELD_FULL_NAME)));
+                child.setStandard(cursor.getInt(cursor.getColumnIndex(FIELD_STANDARD)));
+                child.setAge(cursor.getInt(cursor.getColumnIndex(FIELD_AGE)));
+                child.setGender(cursor.getString(cursor.getColumnIndex(FIELD_GENDER)));
+                child.setUid(cursor.getString(cursor.getColumnIndex(FIELD_UID)));
+
+                childArrayList.add(child);
+            }
+
+            cursor.close();
+        }
+
+        return childArrayList;
     }
 
 }

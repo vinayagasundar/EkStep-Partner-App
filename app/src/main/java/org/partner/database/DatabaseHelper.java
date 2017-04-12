@@ -50,6 +50,8 @@ import java.io.OutputStream;
 
     /*package*/ DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
+        mContext = context;
     }
 
 
