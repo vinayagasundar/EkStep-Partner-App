@@ -127,7 +127,7 @@ public final class PartnerDBHelper {
             throw new NullPointerException("school name should not be null");
         }
 
-        final String where = FIELD_DISTRICT + " = ? AND " + FIELD_BLOCK + " = ? "
+        final String where = FIELD_DISTRICT + " = ? AND " + FIELD_BLOCK + " = ? AND "
                 + FIELD_SCHOOL_NAME + " = ?";
         final String [] whereArgs = {
                 district,
