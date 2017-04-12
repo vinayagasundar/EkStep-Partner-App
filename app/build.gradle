@@ -69,7 +69,7 @@ dependencies {
 
 
     compile 'com.jayway.android.robotium:robotium-solo:5.4.1'
-    compile 'org.ekstep.genieservices:sdks:1.2.4@aar'
-    compile 'org.ekstep.genieservices:aidls:1.2.4@aar'
+    compile 'org.ekstep.genieservices:sdks:1.5.17@aar'
+    compile 'org.ekstep.genieservices:aidls:1.5.17@aar'
     compile 'com.github.clans:fab:1.+'
 }
