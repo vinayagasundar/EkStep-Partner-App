@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,7 +26,6 @@ import org.ekstep.genieservices.sdks.response.GenieListResponse;
 import org.json.JSONArray;
 import org.partner.BuildConfig;
 import org.partner.R;
-import org.partner.activity.LandingActivity;
 import org.partner.adapter.ChildListAdapter;
 import org.partner.callback.IUserProfile;
 import org.partner.callback.LaunchFragmentCallback;
@@ -233,11 +233,16 @@ public class ListChildFragment extends Fragment
         mChildAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Child child = mChildList.get(position);
+                Child child = mChildAdapter.getChildAtPosition(position);
 
                 if (mCallback != null) {
-                    mCallback.switchFragment(LandingActivity.FRAGMENT_CHILD_DETAILS,
-                            child.getUid());
+                    if (!TextUtils.isEmpty(child.getUid())) {
+                        Fragment fragment = ChildDetailFragment.newInstance(child.getUid());
+                        mCallback.launchFragment(fragment);
+                    } else {
+                        Fragment fragment = CreateChildFragment.newInstance(child);
+                        mCallback.launchFragment(fragment);
+                    }
                 }
             }
         });

@@ -1,5 +1,6 @@
 package org.partner.database;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -7,6 +8,7 @@ import android.text.TextUtils;
 import org.partner.model.Child;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A helper class to access the access database for particular purpose
@@ -152,6 +154,47 @@ public final class PartnerDBHelper {
 
 
     /**
+     * Get the school information in map for sending it in Partner Data
+     * @param schoolId ID of the school
+     * @return
+     */
+    public static HashMap<String, String> getSchoolInfo(String schoolId) {
+        if (TextUtils.isEmpty(schoolId)) {
+            throw new IllegalArgumentException("School ID should be valid string");
+        }
+
+        final String where = FIELD_SCHOOL_ID + " = ?";
+        final String [] whereArgs = {
+                schoolId
+        };
+
+        HashMap<String, String> values = new HashMap<>();
+
+        Cursor cursor = PartnerDatabaseHandler.getInstance().query(TABLE_SCHOOL_INFO, null, where,
+                whereArgs, null, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            final int columnCount = cursor.getColumnCount();
+            int columnIndex = 0;
+            cursor.moveToNext();
+
+            while (columnIndex < columnCount) {
+                String key = cursor.getColumnName(columnIndex);
+                String value = cursor.getString(columnIndex);
+
+                values.put(key, value);
+
+                columnIndex++;
+            }
+
+            cursor.close();
+        }
+
+        return values;
+    }
+
+
+    /**
      * Get the list of the child (student) for given {@code schoolId}
      * @param schoolId Unique id of the school
      * @return list of {@link Child}
@@ -177,6 +220,7 @@ public final class PartnerDBHelper {
                 child.setAge(cursor.getInt(cursor.getColumnIndex(FIELD_AGE)));
                 child.setGender(cursor.getString(cursor.getColumnIndex(FIELD_GENDER)));
                 child.setUid(cursor.getString(cursor.getColumnIndex(FIELD_UID)));
+                child.setSchoolId(cursor.getString(cursor.getColumnIndex(FIELD_SCHOOL_ID)));
 
                 childArrayList.add(child);
             }
@@ -185,6 +229,23 @@ public final class PartnerDBHelper {
         }
 
         return childArrayList;
+    }
+
+
+    /**
+     * Update the child's UID in the database
+     * @param child child for which UID needs to be update
+     */
+    public static void updateUidForChild(Child child) {
+        final String where = FIELD_STUDENT_ID + " = ?";
+        final String [] whereArgs = {
+                child.getStudentId()
+        };
+
+        ContentValues values = new ContentValues();
+        values.put(FIELD_UID, child.getUid());
+
+        PartnerDatabaseHandler.getInstance().update(TABLE_STUDENT_INFO, values, where, whereArgs);
     }
 
 }

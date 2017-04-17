@@ -62,10 +62,11 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.Chil
             standardText = String.format(Locale.ENGLISH, standardText, "Class", "No Data");
         }
 
-        if (TextUtils.isEmpty(child.getUid())) {
-            holder.mChildHandleText.setText(child.getFullName());
-        } else {
+
+        if (!TextUtils.isEmpty(child.getUid()) && !TextUtils.isEmpty(child.getHandle())) {
             holder.mChildHandleText.setText(child.getHandle());
+        } else {
+            holder.mChildHandleText.setText(child.getFullName());
         }
 
         holder.mChildStandardText.setText(standardText);
@@ -122,6 +123,20 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.Chil
         if (localCopy.size() > 0) {
             mData = new ArrayList<>(localCopy);
             notifyDataSetChanged();
+        }
+    }
+
+
+    /**
+     * Get the child in the particular position
+     * @param position position of the child in the list
+     * @return if the child exits it'll be return otherwise null
+     */
+    public Child getChildAtPosition(int position) {
+        if (position >= 0 && position < mData.size()) {
+            return mData.get(position);
+        } else {
+            return null;
         }
     }
 

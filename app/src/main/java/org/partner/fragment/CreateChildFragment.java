@@ -26,11 +26,8 @@ import org.ekstep.genieservices.sdks.Telemetry;
 import org.ekstep.genieservices.sdks.UserProfile;
 import org.ekstep.genieservices.sdks.response.GenieResponse;
 import org.partner.BuildConfig;
-import org.partner.R;
-import org.partner.util.AppConstants;
 import org.partner.PartnerApp;
-import org.partner.util.TelemetryEventGenertor;
-import org.partner.util.Utils;
+import org.partner.R;
 import org.partner.callback.CurrentGetUserResponseHandler;
 import org.partner.callback.CurrentUserResponseHandler;
 import org.partner.callback.ICurrentGetUser;
@@ -43,6 +40,11 @@ import org.partner.callback.PartnerDataResponseHandler;
 import org.partner.callback.StartSessionResponseHandler;
 import org.partner.callback.TelemetryResponseHandler;
 import org.partner.callback.UserProfileCreateResponseHandler;
+import org.partner.database.PartnerDBHelper;
+import org.partner.model.Child;
+import org.partner.util.AppConstants;
+import org.partner.util.TelemetryEventGenertor;
+import org.partner.util.Utils;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -58,6 +60,9 @@ public class CreateChildFragment extends Fragment
 
     private static final String TAG = "CreateChildFragment";
     private static final boolean DEBUG = BuildConfig.DEBUG;
+
+
+    private static final String BUNDLE_CHILD = "child";
 
     private EditText mHandleEditText;
 
@@ -95,11 +100,45 @@ public class CreateChildFragment extends Fragment
     private Partner mPartner;
 
 
+    /**
+     * Child from the local database.
+     */
+    private Child mChild;
+
+
 
     public CreateChildFragment() {
         // Required empty public constructor
     }
 
+
+    /**
+     * Get the instance of the {@link CreateChildFragment} with {@link Child} data from the local
+     * @param child instance of the child it maybe null
+     * @return instance of the {@link CreateChildFragment}
+     */
+    public static CreateChildFragment newInstance(@Nullable Child child) {
+        CreateChildFragment createChildFragment = new CreateChildFragment();
+
+        if (child != null) {
+            Bundle args = new Bundle();
+            args.putParcelable(BUNDLE_CHILD, child);
+
+            createChildFragment.setArguments(args);
+        }
+
+        return createChildFragment;
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getArguments() != null) {
+            mChild = getArguments().getParcelable(BUNDLE_CHILD);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -130,6 +169,29 @@ public class CreateChildFragment extends Fragment
                 processData();
             }
         });
+
+        if (mChild != null) {
+            mHandleEditText.setText(mChild.getFullName());
+            mAgeEditText.setText(String.valueOf(mChild.getAge()));
+
+            if (mChild.getGender().toLowerCase().equals("male")) {
+                mGenderSpinner.setSelection(0, false);
+            } else {
+                mGenderSpinner.setSelection(1, false);
+            }
+
+            int totalItemCount = mClassSpinner.getCount();
+
+            for (int i = 0; i < totalItemCount; i++) {
+                if (mClassSpinner.getAdapter().getItem(i)
+                        .toString().toLowerCase().equals(String.valueOf(mChild.getStandard()))) {
+                    mClassSpinner.setSelection(i, false);
+                    break;
+                }
+            }
+
+            mChildNameEditText.setText(mChild.getFullName());
+        }
     }
 
 
@@ -198,6 +260,9 @@ public class CreateChildFragment extends Fragment
         CurrentUserResponseHandler responseHandler = new CurrentUserResponseHandler(this);
 
         mUid = data.get("uid");
+        mChild.setUid(mUid);
+
+        PartnerDBHelper.updateUidForChild(mChild);
 
         if (DEBUG) {
             Log.d(TAG, "onSuccessUserProfile: UID : " + mUid);
@@ -254,6 +319,12 @@ public class CreateChildFragment extends Fragment
         partnerData.put("child_name", mChildNameEditText.getText().toString());
         partnerData.put("address", mAddressEditText.getText().toString());
         partnerData.put("contact", mContactNumberText.getText().toString());
+
+        HashMap<String, String> schoolData = PartnerDBHelper.getSchoolInfo(mChild.getSchoolId());
+
+        if (schoolData != null && schoolData.size() > 0) {
+            partnerData.putAll(schoolData);
+        }
 
         PartnerDataResponseHandler responseHandler = new PartnerDataResponseHandler(this);
 
