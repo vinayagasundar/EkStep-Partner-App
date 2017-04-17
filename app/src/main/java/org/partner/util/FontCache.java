@@ -1,4 +1,4 @@
-package org.partner.model;
+package org.partner.util;
 
 import android.content.Context;
 import android.graphics.Typeface;

@@ -6,7 +6,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 
 import org.partner.R;
-import org.partner.model.FontCache;
+import org.partner.util.FontCache;
 
 
 /**
