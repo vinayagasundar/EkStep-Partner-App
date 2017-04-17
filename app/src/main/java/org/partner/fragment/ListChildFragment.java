@@ -27,6 +27,7 @@ import org.partner.callback.IUserProfile;
 import org.partner.callback.LaunchFragmentCallback;
 import org.partner.callback.OnItemClickListener;
 import org.partner.callback.UserProfileResponseHandler;
+import org.partner.database.PartnerDBHelper;
 import org.partner.model.Child;
 
 import java.lang.reflect.Type;
@@ -42,6 +43,9 @@ public class ListChildFragment extends Fragment
     private static final String TAG = "ListChildFragment";
 
     private static final boolean DEBUG = BuildConfig.DEBUG;
+
+
+    private static final String BUNDLE_SCHOOL_ID = "school_id";
 
 
     /**
@@ -62,6 +66,12 @@ public class ListChildFragment extends Fragment
 
 
     /**
+     * ID of the school
+     */
+    private String mSchoolId = null;
+
+
+    /**
      * Callback for updating fragment
      */
     private LaunchFragmentCallback mCallback;
@@ -73,6 +83,23 @@ public class ListChildFragment extends Fragment
     }
 
 
+    /**
+     * Create a new instance of the fragment
+     * @param schoolId id of the school
+     * @return fragment instance
+     */
+    public static ListChildFragment newInstance(String schoolId) {
+        ListChildFragment listChildFragment = new ListChildFragment();
+
+        Bundle args = new Bundle();
+        args.putString(BUNDLE_SCHOOL_ID, schoolId);
+
+        listChildFragment.setArguments(args);
+
+        return listChildFragment;
+    }
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +107,10 @@ public class ListChildFragment extends Fragment
 
         if (getActivity() instanceof LaunchFragmentCallback) {
             mCallback = (LaunchFragmentCallback) getActivity();
+        }
+
+        if (getArguments() != null) {
+            mSchoolId = getArguments().getString(BUNDLE_SCHOOL_ID, null);
         }
     }
 
@@ -100,8 +131,12 @@ public class ListChildFragment extends Fragment
         mPartner = new Partner(getActivity());
         mUserProfile = new UserProfile(getActivity());
 
-        UserProfileResponseHandler responseHandler = new UserProfileResponseHandler(this);
-        mUserProfile.getAllProfiles(responseHandler);
+        if (mSchoolId == null) {
+            UserProfileResponseHandler responseHandler = new UserProfileResponseHandler(this);
+            mUserProfile.getAllProfiles(responseHandler);
+        } else {
+            loadChildBySchool();
+        }
 
     }
 
@@ -169,6 +204,15 @@ public class ListChildFragment extends Fragment
                 }
             }
         });
+    }
+
+
+    /**
+     * Get all child related to a school id
+     */
+    private void loadChildBySchool() {
+        mChildList = PartnerDBHelper.getAllChild(mSchoolId);
+        initChildListRecycler();
     }
 
 

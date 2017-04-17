@@ -1,6 +1,7 @@
 package org.partner.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -69,6 +70,14 @@ public class LandingActivity extends AppCompatActivity
         mUid = uid;
 
         displayFragment();
+    }
+
+
+    @Override
+    public void launchFragment(@NonNull Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
     }
 
     private void displayFragment() {

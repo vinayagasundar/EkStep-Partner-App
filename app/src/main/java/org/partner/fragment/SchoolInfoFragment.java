@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import org.partner.BuildConfig;
 import org.partner.R;
+import org.partner.callback.LaunchFragmentCallback;
 import org.partner.customviews.CustomButton;
 import org.partner.database.PartnerDBHelper;
 import org.partner.util.PrefUtil;
@@ -25,6 +28,11 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class SchoolInfoFragment extends Fragment {
+
+
+    private static final String TAG = "SchoolInfoFragment";
+
+    private static final boolean DEBUG = BuildConfig.DEBUG;
 
 
     private Spinner mDistrictSpinner;
@@ -42,11 +50,26 @@ public class SchoolInfoFragment extends Fragment {
 
 
 
+    /**
+     * Callback for updating fragment
+     */
+    private LaunchFragmentCallback mCallback;
+
+
 
     public SchoolInfoFragment() {
         // Required empty public constructor
     }
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getActivity() != null && getActivity() instanceof LaunchFragmentCallback) {
+            mCallback = (LaunchFragmentCallback) getActivity();
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -148,7 +171,17 @@ public class SchoolInfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validate()) {
+                    String schoolID = PartnerDBHelper.getSchoolID(mSelectedDistrict, mSelectedBlock,
+                            mSelectedSchool);
 
+                    if (DEBUG) {
+                        Log.i(TAG, "onClick: " + schoolID);
+                    }
+
+                    if (mCallback != null) {
+                        Fragment fragment = ListChildFragment.newInstance(schoolID);
+                        mCallback.launchFragment(fragment);
+                    }
                 }
             }
         });
