@@ -6,8 +6,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -37,7 +41,7 @@ import java.util.List;
  * Fragment to display the Child from Genie
  */
 public class ListChildFragment extends Fragment
-        implements IUserProfile {
+        implements IUserProfile, SearchView.OnQueryTextListener {
 
 
     private static final String TAG = "ListChildFragment";
@@ -76,6 +80,10 @@ public class ListChildFragment extends Fragment
      */
     private LaunchFragmentCallback mCallback;
 
+    /**
+     * Adapter for Child list RecyclerView
+     */
+    private ChildListAdapter mChildAdapter;
 
 
     public ListChildFragment() {
@@ -112,6 +120,8 @@ public class ListChildFragment extends Fragment
         if (getArguments() != null) {
             mSchoolId = getArguments().getString(BUNDLE_SCHOOL_ID, null);
         }
+
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -140,6 +150,20 @@ public class ListChildFragment extends Fragment
 
     }
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_child_list, menu);
+
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+
+        if (searchView != null) {
+            searchView.setOnQueryTextListener(this);
+        }
+
+    }
 
     @Override
     public void onDestroy() {
@@ -179,6 +203,19 @@ public class ListChildFragment extends Fragment
     }
 
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        if (mChildAdapter != null) {
+            mChildAdapter.search(newText);
+        }
+        return false;
+    }
+
     /**
      * Initialize the {@link RecyclerView} with the Child data
      */
@@ -187,13 +224,13 @@ public class ListChildFragment extends Fragment
             return;
         }
 
-        ChildListAdapter adapter = new ChildListAdapter(mChildList);
+        mChildAdapter = new ChildListAdapter(mChildList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
         mChildListRecyclerView.setLayoutManager(layoutManager);
-        mChildListRecyclerView.setAdapter(adapter);
+        mChildListRecyclerView.setAdapter(mChildAdapter);
 
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+        mChildAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 Child child = mChildList.get(position);
