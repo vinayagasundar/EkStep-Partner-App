@@ -33,7 +33,7 @@ public final class PartnerDBHelper {
     // FIELD_SCHOOL_ID also exist in TABLE_STUDENT_INFO
 
     public static final String FIELD_STUDENT_ID = "student_id";
-    public static final String FIELD_FULL_NAME = "full_name";
+    public static final String FIELD_FULL_NAME = "fullname";
     public static final String FIELD_STANDARD = "standard";
     public static final String FIELD_AGE = "age";
     public static final String FIELD_GENDER = "gender";
