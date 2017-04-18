@@ -180,7 +180,7 @@ public class SchoolInfoFragment extends Fragment {
 
                     if (mCallback != null) {
                         Fragment fragment = ListChildFragment.newInstance(schoolID);
-                        mCallback.launchFragment(fragment);
+                        mCallback.launchFragment(fragment, true);
                     }
                 }
             }

@@ -22,6 +22,7 @@ public interface LaunchFragmentCallback {
     /**
      * It'll directly launch the fragment
      * @param fragment instance of the fragment
+     * @param addToBackStack flag to indicate do we need add it into Back stack or not
      */
-    void launchFragment(@NonNull Fragment fragment);
+    void launchFragment(@NonNull Fragment fragment, boolean addToBackStack);
 }

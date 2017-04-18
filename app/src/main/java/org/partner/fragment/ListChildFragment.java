@@ -238,10 +238,10 @@ public class ListChildFragment extends Fragment
                 if (mCallback != null) {
                     if (!TextUtils.isEmpty(child.getUid())) {
                         Fragment fragment = ChildDetailFragment.newInstance(child.getUid());
-                        mCallback.launchFragment(fragment);
+                        mCallback.launchFragment(fragment, true);
                     } else {
                         Fragment fragment = CreateChildFragment.newInstance(child);
-                        mCallback.launchFragment(fragment);
+                        mCallback.launchFragment(fragment, true);
                     }
                 }
             }
