@@ -11,8 +11,8 @@ https://community.ekstep.in/specifications-guides/53-telemetry-specification
 
 How to create public & private key for Partner App and Why I need this ?
 
-	All the Partner data will be encrypted before sending into Genie. 
-	For this encryption we need these keys.
+All the Partner data will be encrypted before sending into Genie. 
+For this encryption we need these keys.
 
 Windows
 =======
