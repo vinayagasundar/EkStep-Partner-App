@@ -39,6 +39,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
+        debug {
+            resValue("string", "PORT_NUMBER", "8083")
+        }
     }
     lintOptions {
         abortOnError false
@@ -72,4 +75,9 @@ dependencies {
     compile 'org.ekstep.genieservices:sdks:1.5.17@aar'
     compile 'org.ekstep.genieservices:aidls:1.5.17@aar'
     compile 'com.github.clans:fab:1.+'
+
+    debugCompile('com.amitshekhar.android:debug-db:1.0.0') {
+        exclude module: 'gson'
+    }
+
 }
