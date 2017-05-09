@@ -18,6 +18,7 @@ Windows
 =======
 
 Steps to Generate RSA public and private keys:
+
 	1) Download openssl from this link:   					    
 		http://www.indyproject.org/Sockets/fpc/OpenSSLforWin64.en.aspx
 	2) Extract the downloaded folder and click on "openssl.exe" then it will open cmd prompt.		
