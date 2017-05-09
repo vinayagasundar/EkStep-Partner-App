@@ -3,8 +3,7 @@ What are things need to build a Partner App ?
 2. Genie SDK
 
 Where can i find documentation and example for building Partner App ?
-1. https://github.com/ekstep/EkStep-Partner-App
-2. https://github.com/ekstep/EkStep-Partner-App/wiki
+1. https://github.com/ekstep/EkStep-Partner-App/wiki
 
 What is Telementry ? How can i use it my app ?
 https://community.ekstep.in/specifications-guides/53-telemetry-specification
