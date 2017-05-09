@@ -141,6 +141,9 @@ public class ListChildFragment extends Fragment
         mPartner = new Partner(getActivity());
         mUserProfile = new UserProfile(getActivity());
 
+
+        // If mSchoolId value is not null then list the child details
+        // from the local database otherwise it'll list the Child from Genie
         if (mSchoolId == null) {
             UserProfileResponseHandler responseHandler = new UserProfileResponseHandler(this);
             mUserProfile.getAllProfiles(responseHandler);

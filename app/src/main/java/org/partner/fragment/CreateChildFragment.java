@@ -259,6 +259,10 @@ public class CreateChildFragment extends Fragment
 
         CurrentUserResponseHandler responseHandler = new CurrentUserResponseHandler(this);
 
+
+        // Store the <code>UID</code> in local database or network to avoid creating duplicate child in
+        // Genie every time. if a Child has <code>UID</code> Don't create as New Child
+
         mUid = data.get("uid");
         mChild.setUid(mUid);
 

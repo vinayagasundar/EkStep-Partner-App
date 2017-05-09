@@ -13,7 +13,6 @@ import android.view.View;
 import org.partner.R;
 import org.partner.callback.LaunchFragmentCallback;
 import org.partner.fragment.ChildDetailFragment;
-import org.partner.fragment.CreateChildFragment;
 import org.partner.fragment.ListChildFragment;
 import org.partner.fragment.SchoolInfoFragment;
 
@@ -101,10 +100,10 @@ public class LandingActivity extends AppCompatActivity
                 fragment = ChildDetailFragment.newInstance(mUid);
                 break;
 
-            case FRAGMENT_CHILD_CREATE:
-                mAddChildFab.hide();
-                fragment = new CreateChildFragment();
-                break;
+//            case FRAGMENT_CHILD_CREATE:
+//                mAddChildFab.hide();
+//                fragment = new CreateChildFragment();
+//                break;
 
             case FRAGMENT_SELECT_SCHOOL_INFO:
                 mAddChildFab.hide();
