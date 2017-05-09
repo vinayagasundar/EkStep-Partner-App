@@ -319,6 +319,11 @@ public class CreateChildFragment extends Fragment
 
         HashMap<String, Object> partnerData = new HashMap<>();
 
+
+        // Partner Data will be encrypted using Partner Key.
+        // Note : Values collected in the app only for demo
+        // It'll differ for each Partner based on their requirement
+
         partnerData.put("uid", mUid);
         partnerData.put("child_name", mChildNameEditText.getText().toString());
         partnerData.put("address", mAddressEditText.getText().toString());
